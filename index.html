@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/dashboard.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Extension Firewall — Dev Preview</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 560px;
+        margin: 48px auto;
+        padding: 0 16px;
+        color: #1a1a1a;
+      }
+      a.card {
+        display: block;
+        padding: 16px;
+        margin: 12px 0;
+        border: 1px solid #d9dce1;
+        border-radius: 8px;
+        text-decoration: none;
+        color: inherit;
+      }
+      a.card:hover {
+        background: #f6f7f9;
+      }
+      code {
+        background: #f0f0f0;
+        padding: 2px 5px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AI Extension Firewall — Dev Preview</h1>
+    <p>Redirecting to the dashboard… if nothing happens, use a link below.</p>
+    <p>
+      This page only exists for local browser preview (<code>npm run dev:web</code>). It is not part of
+      the packaged Chrome extension. The popup and dashboard below run against mocked
+      <code>chrome.*</code> APIs backed by fixture extensions.
+    </p>
+    <a class="card" href="/dashboard.html">
+      <strong>Open dashboard</strong>
+      <div>Full extension inventory, filtering, and export</div>
+    </a>
+    <a class="card" href="/popup.html">
+      <strong>Open popup</strong>
+      <div>The toolbar popup summary view</div>
+    </a>
+  </body>
+</html>

@@ -144,7 +144,7 @@ export function Dashboard() {
         </div>
       </div>
 
-      <SummaryHeader extensions={extensions} scannedAt={scannedAt} changeCount={changes.length} />
+      <SummaryHeader extensions={extensions} scannedAt={scannedAt} changes={changes} />
 
       <FilterBar
         levelFilter={levelFilter}

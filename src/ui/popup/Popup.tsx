@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import type { ExtensionRecord } from "../../core/types";
+import type { ExtensionRecord, SnapshotChange } from "../../core/types";
 import { loadStoredScan, runScan } from "../scan-controller";
 import { SummaryHeader } from "../components/SummaryHeader";
 
 export function Popup() {
   const [extensions, setExtensions] = useState<ExtensionRecord[]>([]);
-  const [changeCount, setChangeCount] = useState(0);
+  const [changes, setChanges] = useState<SnapshotChange[]>([]);
   const [scannedAt, setScannedAt] = useState<string>();
   const [loading, setLoading] = useState(true);
 
@@ -14,12 +14,12 @@ export function Popup() {
       const stored = await loadStoredScan();
       if (stored) {
         setExtensions(stored.extensions);
-        setChangeCount(stored.changes.length);
+        setChanges(stored.changes);
         setScannedAt(stored.scannedAt);
       } else {
         const result = await runScan();
         setExtensions(result.extensions);
-        setChangeCount(result.changes.length);
+        setChanges(result.changes);
         setScannedAt(result.scannedAt);
       }
       setLoading(false);
@@ -39,7 +39,7 @@ export function Popup() {
         <p>Scanning installed extensions…</p>
       ) : (
         <>
-          <SummaryHeader extensions={extensions} scannedAt={scannedAt} changeCount={changeCount} />
+          <SummaryHeader extensions={extensions} scannedAt={scannedAt} changes={changes} />
           {changed.length > 0 && (
             <p role="alert" style={{ color: "#b45309" }}>
               {changed.length} extension{changed.length === 1 ? "" : "s"} gained relevant access — review recommended.
