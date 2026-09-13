@@ -177,7 +177,7 @@ export function installChromeMock() {
     },
     tabs: {
       async create({ url }: { url: string }) {
-        window.open(url, "_blank");
+        window.open(url, "_blank", "noopener,noreferrer");
         return {};
       },
     },

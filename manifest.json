@@ -24,7 +24,7 @@
   },
   "permissions": ["management", "storage", "tabs"],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'self';"
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'self'; connect-src 'self';"
   },
   "minimum_chrome_version": "114"
 }
