@@ -96,7 +96,10 @@ tests/
 | ------------ | ------------------------------------------------------------------------ |
 | `management` | Required to list installed extensions and their declared permissions.    |
 | `storage`    | Stores scan snapshots and settings locally, on-device only.              |
-| `tabs`       | Opens Chrome's extension-management page and the onboarding tab.         |
+
+That's the whole list — no `tabs` permission is requested. `chrome.tabs.create()` (used to open Chrome's
+extension-management page and the onboarding tab) doesn't require it unless the extension reads a tab's
+`url`/`title`/`favIconUrl` back, which this one never does.
 
 All analysis runs locally. You can delete all stored data at any time from the dashboard's Settings panel.
 
