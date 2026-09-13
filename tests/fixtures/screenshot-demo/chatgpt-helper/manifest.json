@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Prompt Helper",
+  "version": "2.3.1",
+  "description": "Adds quick prompt templates to chatgpt.com.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://chatgpt.com/*"]
+}
