@@ -11,8 +11,8 @@
 - [x] Onboarding explaining the `management` permission
 - [x] Real-browser integration test suite (loads the packaged extension in real Chromium)
 - [x] Manual security review pass (injection, CSP, network isolation, storage deletion — see docs/THREAT_MODEL.md)
+- [x] Accessibility pass (heading hierarchy, full keyboard operability — verified in real Chromium)
 - [ ] Chrome Web Store listing and screenshots
-- [ ] Full accessibility review pass
 - [ ] Reproducible build docs + release checksums
 
 ## Later (only after validating user interest — see the MVP plan)

@@ -94,6 +94,39 @@ describe.skipIf(!existsSync(DIST_DIR))("packaged extension in real Chromium", ()
     expect(errors).toEqual([]);
   });
 
+  it("has a heading hierarchy with no level skips (h1 -> h2 -> h3)", async () => {
+    const page = findPage("dashboard");
+    const headingLevels = await page.evaluate(() =>
+      Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,h6")).map((h) => Number(h.tagName[1]))
+    );
+    expect(headingLevels[0]).toBe(1);
+    for (let i = 1; i < headingLevels.length; i++) {
+      expect(headingLevels[i] - headingLevels[i - 1]).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("is fully keyboard operable: Tab reaches 'View details' and Enter toggles it", async () => {
+    const page = findPage("dashboard");
+    // Reload for a deterministic starting DOM: an earlier test expands the
+    // details panel, which would otherwise leave this button reading "Hide
+    // details" and shift the count of focusable elements ahead of it.
+    await page.reload({ waitUntil: "networkidle" });
+    await page.waitForTimeout(500);
+    await page.locator("body").focus();
+    for (let i = 0; i < 8; i++) await page.keyboard.press("Tab");
+    const focusedText = await page.evaluate(() => document.activeElement?.textContent);
+    expect(focusedText).toContain("View details");
+
+    await page.keyboard.press("Enter");
+    await page.waitForTimeout(300);
+    const toggled = await page.evaluate(() => {
+      const btn = Array.from(document.querySelectorAll("button")).find((b) => b.textContent?.includes("details"));
+      return { text: btn?.textContent, ariaExpanded: btn?.getAttribute("aria-expanded") };
+    });
+    expect(toggled.text).toContain("Hide details");
+    expect(toggled.ariaExpanded).toBe("true");
+  });
+
   it("disabling an extension from the dashboard calls the real chrome.management API", async () => {
     const page = findPage("dashboard");
     await page.click("button:has-text('Disable')");
