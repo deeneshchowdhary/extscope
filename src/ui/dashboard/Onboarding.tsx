@@ -8,7 +8,7 @@ export function Onboarding({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div style={{ maxWidth: 640, margin: "0 auto", padding: 24 }}>
-      <h1>Welcome to AI Extension Firewall</h1>
+      <h1>Welcome to ExtScope</h1>
       <p>
         This extension shows you which of your other installed browser extensions may be able to read or
         modify conversations on AI websites such as ChatGPT, Claude, Gemini, Copilot, Perplexity, DeepSeek,
@@ -18,7 +18,7 @@ export function Onboarding({ onComplete }: { onComplete: () => void }) {
       <h2>Why the "management" permission?</h2>
       <p>
         Chrome's <code>management</code> permission is the only way to list your installed extensions and
-        their declared permissions. AI Extension Firewall uses it solely to read this metadata locally, and
+        their declared permissions. ExtScope uses it solely to read this metadata locally, and
         to let you disable or enable an extension from this dashboard.
       </p>
 

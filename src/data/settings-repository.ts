@@ -1,7 +1,7 @@
 import type { AiService } from "../core/types";
 
-const CUSTOM_AI_SERVICES_KEY = "aief.settings.customAiServices";
-const ONBOARDING_COMPLETE_KEY = "aief.settings.onboardingComplete";
+const CUSTOM_AI_SERVICES_KEY = "extscope.settings.customAiServices";
+const ONBOARDING_COMPLETE_KEY = "extscope.settings.onboardingComplete";
 
 export async function getCustomAiServices(): Promise<AiService[]> {
   const result = await chrome.storage.local.get(CUSTOM_AI_SERVICES_KEY);

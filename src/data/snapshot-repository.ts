@@ -1,8 +1,8 @@
 import type { ExtensionRecord, Snapshot, SnapshotChange } from "../core/types";
 
-const CURRENT_SNAPSHOT_KEY = "aief.snapshot.current";
-const PREVIOUS_SNAPSHOT_KEY = "aief.snapshot.previous";
-const LAST_CHANGES_KEY = "aief.snapshot.lastChanges";
+const CURRENT_SNAPSHOT_KEY = "extscope.snapshot.current";
+const PREVIOUS_SNAPSHOT_KEY = "extscope.snapshot.previous";
+const LAST_CHANGES_KEY = "extscope.snapshot.lastChanges";
 
 export async function getCurrentSnapshot(): Promise<Snapshot | undefined> {
   const result = await chrome.storage.local.get(CURRENT_SNAPSHOT_KEY);

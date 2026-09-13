@@ -5,7 +5,7 @@ this writing — recheck them in the dashboard before submitting, since Google d
 
 ## Listing title
 
-**AI Extension Firewall**
+**ExtScope**
 
 ## Short description (≤ 132 characters)
 
@@ -24,7 +24,7 @@ fit)
 Know which browser extensions can access your AI conversations before you paste confidential
 information.
 
-AI Extension Firewall scans your installed Chrome extensions and shows you which ones declare
+ExtScope scans your installed Chrome extensions and shows you which ones declare
 permission to read or modify pages on ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity,
 DeepSeek, and Grok — the AI sites where you're most likely to paste source code, company documents,
 or other sensitive information.
@@ -44,7 +44,7 @@ WHAT YOU CAN DO
 
 IMPORTANT: This is a capability report, not proof of misbehavior
 An extension with access to an AI website may be using that access for something completely
-legitimate. AI Extension Firewall reports what an extension is *capable* of based on its declared
+legitimate. ExtScope reports what an extension is *capable* of based on its declared
 permissions — it never claims an extension is malware, and it never reads your prompts, responses, or
 browsing history to make that determination.
 

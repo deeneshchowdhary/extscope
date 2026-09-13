@@ -1,5 +1,5 @@
 {
-  "name": "ai-extension-firewall",
+  "name": "extscope",
   "version": "0.1.0",
   "description": "See which Chrome extensions may access your AI conversations. Local, explainable, and open source.",
   "private": true,

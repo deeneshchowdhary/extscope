@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Dummy AI Reader (test fixture)",
   "version": "1.0.0",
-  "description": "A minimal unpacked extension used only to populate chrome.management.getAll() during real-browser integration testing of AI Extension Firewall. Not published anywhere.",
+  "description": "A minimal unpacked extension used only to populate chrome.management.getAll() during real-browser integration testing of ExtScope. Not published anywhere.",
   "permissions": ["scripting", "clipboardRead"],
   "host_permissions": ["https://chatgpt.com/*", "https://*.claude.ai/*"]
 }

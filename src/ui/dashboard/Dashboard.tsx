@@ -137,15 +137,15 @@ export function Dashboard() {
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 24 }}>
       <div className="toolbar" style={{ justifyContent: "space-between" }}>
-        <h1 style={{ fontSize: 20 }}>AI Extension Firewall</h1>
+        <h1 style={{ fontSize: 20 }}>ExtScope</h1>
         <div className="toolbar">
           <button type="button" onClick={() => void performScan()} disabled={scanning}>
             {scanning ? "Scanning…" : "Rescan now"}
           </button>
-          <button type="button" onClick={() => downloadTextFile("ai-extension-firewall-report.md", exportToMarkdown(extensions, changes), "text/markdown")}>
+          <button type="button" onClick={() => downloadTextFile("extscope-report.md", exportToMarkdown(extensions, changes), "text/markdown")}>
             Export Markdown
           </button>
-          <button type="button" onClick={() => downloadTextFile("ai-extension-firewall-report.json", exportToJson(extensions, changes), "application/json")}>
+          <button type="button" onClick={() => downloadTextFile("extscope-report.json", exportToJson(extensions, changes), "application/json")}>
             Export JSON
           </button>
           <button type="button" onClick={() => setView("settings")}>

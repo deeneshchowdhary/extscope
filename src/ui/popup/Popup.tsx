@@ -34,7 +34,7 @@ export function Popup() {
 
   return (
     <div style={{ width: 320, padding: 14 }}>
-      <h1 style={{ fontSize: 16 }}>AI Extension Firewall</h1>
+      <h1 style={{ fontSize: 16 }}>ExtScope</h1>
       {loading ? (
         <p>Scanning installed extensions…</p>
       ) : (

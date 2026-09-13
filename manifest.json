@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "AI Extension Firewall",
+  "name": "ExtScope",
   "version": "0.1.0",
   "description": "See which Chrome extensions may access your AI conversations. Local, explainable, and open source.",
   "icons": {
