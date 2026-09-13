@@ -131,6 +131,11 @@ Every release is a reproducible build from a clean checkout, with a published SH
 See [CONTRIBUTING.md](CONTRIBUTING.md). Please report security issues privately per
 [SECURITY.md](SECURITY.md) rather than filing a public issue.
 
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md) — the short version: nothing is collected, nothing is transmitted, no
+accounts, no servers.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
