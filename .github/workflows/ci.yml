@@ -8,12 +8,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pinned rather than ubuntu-latest: that label has been intermittently
+    # serving Ubuntu 24.04, which renamed the libasound2 package
+    # (libasound2 -> libasound2t64), breaking `playwright install
+    # --with-deps` for the Playwright version this repo pins (see
+    # SECURITY.md for why Playwright itself is pinned). ubuntu-22.04 still
+    # has the old package name and is a stable target, not a moving one.
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run lint
@@ -30,7 +36,7 @@ jobs:
       - name: Checksum the release artifact
         run: |
           shasum -a 256 extscope.zip | tee extscope.zip.sha256
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: extscope-build
           path: |
