@@ -100,6 +100,11 @@ tests/
 
 All analysis runs locally. You can delete all stored data at any time from the dashboard's Settings panel.
 
+## Releasing
+
+Every release is a reproducible build from a clean checkout, with a published SHA-256 checksum. See
+[docs/RELEASING.md](docs/RELEASING.md).
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Please report security issues privately per
