@@ -94,6 +94,7 @@ crop or pad the popup one to a supported dimension before upload if the dashboar
 
 ## Privacy practices tab (Chrome Web Store dashboard)
 
+- Privacy policy URL: `https://github.com/deeneshchowdhary/extscope/blob/main/PRIVACY.md`
 - Does this extension collect user data? **No.**
 - If asked to enumerate data types even for "no data collected": all fields **No** / not applicable.
 - Certify compliance with the Developer Program Policies: yes — nothing here contradicts them; the
