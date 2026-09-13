@@ -12,8 +12,8 @@
 - [x] Real-browser integration test suite (loads the packaged extension in real Chromium)
 - [x] Manual security review pass (injection, CSP, network isolation, storage deletion — see docs/THREAT_MODEL.md)
 - [x] Accessibility pass (heading hierarchy, full keyboard operability — verified in real Chromium)
+- [x] Reproducible build docs + release checksums (docs/RELEASING.md, verified end-to-end + wired into CI)
 - [ ] Chrome Web Store listing and screenshots
-- [ ] Reproducible build docs + release checksums
 
 ## Later (only after validating user interest — see the MVP plan)
 

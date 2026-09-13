@@ -27,7 +27,12 @@ jobs:
         run: |
           cd dist
           zip -r ../ai-extension-firewall.zip .
+      - name: Checksum the release artifact
+        run: |
+          shasum -a 256 ai-extension-firewall.zip | tee ai-extension-firewall.zip.sha256
       - uses: actions/upload-artifact@v4
         with:
           name: ai-extension-firewall-build
-          path: ai-extension-firewall.zip
+          path: |
+            ai-extension-firewall.zip
+            ai-extension-firewall.zip.sha256
