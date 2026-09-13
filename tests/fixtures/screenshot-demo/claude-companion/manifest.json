@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Companion",
+  "version": "0.9.4",
+  "description": "Adds a floating toolbar to every Claude subdomain.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["https://*.claude.ai/*"]
+}

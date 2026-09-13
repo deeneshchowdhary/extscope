@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Universal Page Enhancer",
+  "version": "5.0.0",
+  "description": "Modifies content on every website you visit.",
+  "permissions": ["scripting", "clipboardRead", "cookies"],
+  "host_permissions": ["<all_urls>"]
+}
