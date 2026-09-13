@@ -21,9 +21,9 @@ export function ExtensionCard({ extension, onToggleEnabled }: Props) {
           <div className="extension-icon extension-icon-placeholder" aria-hidden="true" />
         )}
         <div className="extension-card-title">
-          <span id={`ext-${extension.id}-name`} className="extension-name">
+          <h2 id={`ext-${extension.id}-name`} className="extension-name">
             {displayName}
-          </span>
+          </h2>
           <span className="extension-meta">
             v{extension.version} · {extension.enabled ? "Enabled" : "Disabled"}
           </span>
@@ -70,7 +70,7 @@ export function ExtensionCard({ extension, onToggleEnabled }: Props) {
 
       {expanded && (
         <div id={`ext-${extension.id}-details`} className="extension-card-details">
-          <h4>Findings</h4>
+          <h3>Findings</h3>
           <ul className="findings-list">
             {extension.findings.map((finding) => (
               <li key={finding.ruleId} className={`finding finding-${finding.severity}`}>
@@ -87,10 +87,10 @@ export function ExtensionCard({ extension, onToggleEnabled }: Props) {
             ))}
           </ul>
 
-          <h4>Declared permissions</h4>
+          <h3>Declared permissions</h3>
           <p className="mono">{extension.permissions.join(", ") || "None"}</p>
 
-          <h4>Declared host access</h4>
+          <h3>Declared host access</h3>
           <p className="mono">{extension.hostPermissions.join(", ") || "None"}</p>
 
           <p className="extension-id">Extension ID: {extension.id}</p>

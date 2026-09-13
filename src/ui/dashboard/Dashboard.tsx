@@ -120,6 +120,7 @@ export function Dashboard() {
             ← Back to dashboard
           </button>
         </div>
+        <h1 style={{ fontSize: 20 }}>Settings</h1>
         <SettingsPanel
           onDataCleared={() => {
             setExtensions([]);

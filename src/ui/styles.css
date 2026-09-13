@@ -153,8 +153,15 @@ a {
 }
 
 .extension-name {
+  margin: 0;
+  font-size: 14px;
   font-weight: 600;
   overflow-wrap: anywhere;
+}
+
+.extension-card-details h3 {
+  font-size: 13px;
+  margin: 12px 0 4px;
 }
 
 .extension-meta {
