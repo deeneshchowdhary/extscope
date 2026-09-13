@@ -13,7 +13,7 @@
 - [x] Manual security review pass (injection, CSP, network isolation, storage deletion — see docs/THREAT_MODEL.md)
 - [x] Accessibility pass (heading hierarchy, full keyboard operability — verified in real Chromium)
 - [x] Reproducible build docs + release checksums (docs/RELEASING.md, verified end-to-end + wired into CI)
-- [ ] Chrome Web Store listing and screenshots
+- [x] Chrome Web Store listing draft + real screenshots (docs/store-listing.md, docs/store-assets/)
 
 ## Later (only after validating user interest — see the MVP plan)
 
