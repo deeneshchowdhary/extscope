@@ -162,6 +162,10 @@ export function isRelevantChange(change: SnapshotChange): boolean {
   return RELEVANT_CHANGE_TYPES.has(change.changeType);
 }
 
+export function countRelevantChanges(changes: SnapshotChange[]): number {
+  return changes.filter(isRelevantChange).length;
+}
+
 /**
  * Applies a "changed" overlay to records that gained relevant access since
  * the previous scan, surfacing the plan's Changed exposure level while

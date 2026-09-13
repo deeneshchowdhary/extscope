@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { DEFAULT_AI_SERVICES } from "../../src/core/ai-domains";
 import { analyzeExtension } from "../../src/core/exposure-engine";
-import { applyChangeOverlay, diffExtensionRecords, diffSnapshots } from "../../src/core/change-detector";
+import {
+  applyChangeOverlay,
+  countRelevantChanges,
+  diffExtensionRecords,
+  diffSnapshots,
+} from "../../src/core/change-detector";
 import { EXACT_CHATGPT_EXTENSION, NO_ACCESS_EXTENSION } from "../fixtures/extensions";
 
 describe("diffExtensionRecords", () => {
@@ -64,6 +69,24 @@ describe("diffSnapshots", () => {
     const previous = [analyzeExtension(EXACT_CHATGPT_EXTENSION, DEFAULT_AI_SERVICES)];
     const changes = diffSnapshots(previous, []);
     expect(changes).toEqual([expect.objectContaining({ changeType: "removed" })]);
+  });
+});
+
+describe("countRelevantChanges", () => {
+  it("does not count a first-scan install as a relevant change", () => {
+    const current = analyzeExtension(EXACT_CHATGPT_EXTENSION, DEFAULT_AI_SERVICES);
+    const changes = diffExtensionRecords(undefined, current);
+    expect(countRelevantChanges(changes)).toBe(0);
+  });
+
+  it("counts a newly added host grant as relevant", () => {
+    const previous = analyzeExtension(NO_ACCESS_EXTENSION, DEFAULT_AI_SERVICES);
+    const current = analyzeExtension(
+      { ...NO_ACCESS_EXTENSION, hostPermissions: ["https://chatgpt.com/*"] },
+      DEFAULT_AI_SERVICES
+    );
+    const changes = diffExtensionRecords(previous, current);
+    expect(countRelevantChanges(changes)).toBeGreaterThan(0);
   });
 });
 

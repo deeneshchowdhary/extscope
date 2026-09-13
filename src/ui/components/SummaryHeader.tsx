@@ -1,14 +1,16 @@
-import type { ExtensionRecord } from "../../core/types";
+import type { ExtensionRecord, SnapshotChange } from "../../core/types";
+import { countRelevantChanges } from "../../core/change-detector";
 
 interface Props {
   extensions: ExtensionRecord[];
   scannedAt?: string;
-  changeCount: number;
+  changes: SnapshotChange[];
 }
 
-export function SummaryHeader({ extensions, scannedAt, changeCount }: Props) {
+export function SummaryHeader({ extensions, scannedAt, changes }: Props) {
   const withAiAccess = extensions.filter((e) => e.exposureLevel !== "none").length;
   const withAllUrls = extensions.filter((e) => e.exposureLevel === "extensive").length;
+  const changeCount = countRelevantChanges(changes);
 
   return (
     <section className="summary-header" aria-label="Exposure summary">

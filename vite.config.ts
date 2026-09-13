@@ -15,6 +15,10 @@ function copyManifest(): Plugin {
 export default defineConfig({
   plugins: [react(), copyManifest()],
   publicDir: "public",
+  server: {
+    port: 3005,
+    strictPort: true,
+  },
   build: {
     outDir: "dist",
     emptyOutDir: true,

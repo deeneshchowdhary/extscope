@@ -1,4 +1,5 @@
 import type { ExtensionRecord, SnapshotChange } from "../core/types";
+import { countRelevantChanges } from "../core/change-detector";
 import { sanitizeText } from "./json-exporter";
 
 function escapeMarkdownTableCell(value: string): string {
@@ -32,7 +33,7 @@ export function exportToMarkdown(extensions: ExtensionRecord[], changes: Snapsho
   lines.push(
     `- ${extensions.filter((e) => e.exposureLevel === "extensive").length} can access all websites`
   );
-  lines.push(`- ${changes.length} relevant changes since the previous scan`);
+  lines.push(`- ${countRelevantChanges(changes)} relevant changes since the previous scan`);
   lines.push("");
 
   lines.push("## Extensions");
