@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ExtensionRecord } from "../../core/types";
+import { sanitizeText } from "../../core/sanitize-text";
 import { ExposureBadge } from "./ExposureBadge";
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 
 export function ExtensionCard({ extension, onToggleEnabled }: Props) {
   const [expanded, setExpanded] = useState(false);
+  const displayName = sanitizeText(extension.name) || "(unnamed extension)";
 
   return (
     <li className="extension-card" aria-labelledby={`ext-${extension.id}-name`}>
@@ -20,7 +22,7 @@ export function ExtensionCard({ extension, onToggleEnabled }: Props) {
         )}
         <div className="extension-card-title">
           <span id={`ext-${extension.id}-name`} className="extension-name">
-            {extension.name}
+            {displayName}
           </span>
           <span className="extension-meta">
             v{extension.version} · {extension.enabled ? "Enabled" : "Disabled"}

@@ -21,15 +21,21 @@ website while unaware that another installed extension could read or modify that
 - **Chrome `management` API → Extension Inventory Adapter**: trusted input from the browser, but extension
   *names and descriptions* inside that data are attacker-controlled strings supplied by third-party
   extension developers. They are treated as untrusted text: rendered only via React's default escaping
-  (never `dangerouslySetInnerHTML`) and sanitized of control characters before inclusion in exported
-  reports.
+  (never `dangerouslySetInnerHTML`), and additionally passed through `src/core/sanitize-text.ts` — both
+  before display in the dashboard and before inclusion in exported reports — which strips control
+  characters and Unicode bidi-override characters (e.g. RLO/LRO) that could otherwise be used to visually
+  disguise a malicious extension's name as something trustworthy in a tool whose entire purpose is
+  accurately reporting on other extensions.
 - **This extension's own permissions**: `management`, `storage`, and `tabs` are the minimum required to
   inventory extensions, persist snapshots locally, and open Chrome's management page / onboarding tab. No
   host permissions are requested, so this extension itself never gains access to AI websites or any other
   page content.
 - **Local storage (`chrome.storage.local`)**: snapshots and settings never leave the device. There is no
-  network code in this extension; the CSP (`script-src 'self'`) additionally prevents remotely hosted code
-  from ever running in its pages.
+  network code in this extension; the CSP (`script-src 'self'; object-src 'self'; base-uri 'self';
+  connect-src 'self';`) prevents remotely hosted code from ever running in its pages and, via
+  `connect-src`, would confine even an unforeseen `fetch`/XHR call to the extension's own origin. Verified
+  empirically by `tests/integration/extension.test.ts`, which asserts every network request made by the
+  real packaged extension stays on its own `chrome-extension://` origin.
 
 ## Data handled
 
