@@ -26,10 +26,12 @@ website while unaware that another installed extension could read or modify that
   characters and Unicode bidi-override characters (e.g. RLO/LRO) that could otherwise be used to visually
   disguise a malicious extension's name as something trustworthy in a tool whose entire purpose is
   accurately reporting on other extensions.
-- **This extension's own permissions**: `management`, `storage`, and `tabs` are the minimum required to
-  inventory extensions, persist snapshots locally, and open Chrome's management page / onboarding tab. No
-  host permissions are requested, so this extension itself never gains access to AI websites or any other
-  page content.
+- **This extension's own permissions**: `management` and `storage` are the minimum required to inventory
+  extensions and persist snapshots locally. Opening Chrome's management page and the onboarding tab uses
+  `chrome.tabs.create()`, which — verified empirically, not assumed — does not require the `tabs`
+  permission as long as the extension never reads a created tab's `url`/`title`/`favIconUrl` back, which
+  this one never does; so that permission was dropped. No host permissions are requested either, so this
+  extension itself never gains access to AI websites or any other page content.
 - **Local storage (`chrome.storage.local`)**: snapshots and settings never leave the device. There is no
   network code in this extension; the CSP (`script-src 'self'; object-src 'self'; base-uri 'self';
   connect-src 'self';`) prevents remotely hosted code from ever running in its pages and, via

@@ -66,10 +66,11 @@ dashboard — never anything else.
 |---|---|
 | `management` | Core functionality: the only Chrome API that can list installed extensions and their declared permissions/host access, which is what this extension analyzes and reports on. Also used to let the user disable/enable an extension from the dashboard. |
 | `storage` | Stores scan snapshots and user settings (custom AI domains, onboarding state) locally via `chrome.storage.local`. Never synced or transmitted anywhere. |
-| `tabs` | Used only to open Chrome's own `chrome://extensions` management page for a specific extension, and to open the onboarding tab on first install. Does not read tab content or URLs of arbitrary pages. |
 
-No host permissions are requested. This extension cannot access any website's content, including the
-AI sites it reports on.
+No `tabs` permission is requested — `chrome.tabs.create()` (used to open Chrome's own
+`chrome://extensions` page and the onboarding tab) doesn't need it unless the extension reads a created
+tab's URL/title back, which this one never does. No host permissions are requested either. This
+extension cannot access any website's content, including the AI sites it reports on.
 
 ## Single-purpose description (Chrome Web Store requires one)
 
