@@ -52,9 +52,11 @@ Exposure levels are descriptive, not a mysterious numeric score:
 
 ```bash
 npm install
-npm test        # unit tests (Vitest)
-npm run lint     # ESLint
-npm run build    # type-checks and produces dist/
+npm test              # unit tests (Vitest)
+npm run lint          # ESLint
+npm run build         # type-checks and produces dist/
+npm run dev:web       # preview the popup/dashboard at http://localhost:3005 with mocked chrome.* APIs
+npm run test:integration  # loads the real dist/ build into real Chromium (see below)
 ```
 
 ### Load the unpacked extension in Chrome
@@ -63,6 +65,16 @@ npm run build    # type-checks and produces dist/
 2. Open `chrome://extensions`.
 3. Enable **Developer mode**.
 4. Click **Load unpacked** and select the `dist/` directory.
+
+### Real-browser integration tests
+
+`npm run dev:web` previews the UI against a mock of `chrome.management`/`chrome.storage`/`chrome.tabs`
+(`src/dev/chrome-mock.ts`), which is fast but can't exercise real extension lifecycle events. `npm run
+test:integration` instead loads the actual `dist/` build into real headless Chromium (via Playwright) next
+to a minimal fixture extension (`tests/fixtures/dummy-chrome-extension/`) and drives it as a user would —
+onboarding, scanning, disable/enable, export downloads, data deletion — asserting along the way that no
+network requests leave the extension's own origin. Run `npm run build` and `npx playwright install
+chromium` once before using it.
 
 ## Project structure
 

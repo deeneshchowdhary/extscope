@@ -38,33 +38,6 @@ export function Dashboard() {
 
   const initialRoute = window.location.hash.replace("#/", "");
 
-  useEffect(() => {
-    void (async () => {
-      const [onboarded, customServices, stored] = await Promise.all([
-        isOnboardingComplete(),
-        getCustomAiServices(),
-        loadStoredScan(),
-      ]);
-      setServiceOptions(mergeAiServices(customServices));
-
-      if (!onboarded && initialRoute === "onboarding") {
-        setView("onboarding");
-        return;
-      }
-
-      if (stored) {
-        setExtensions(stored.extensions);
-        setChanges(stored.changes);
-        setScannedAt(stored.scannedAt);
-        setView("dashboard");
-      } else {
-        await performScan();
-        setView("dashboard");
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const performScan = async () => {
     setScanning(true);
     try {
@@ -75,6 +48,42 @@ export function Dashboard() {
     } finally {
       setScanning(false);
     }
+  };
+
+  /** Prefers a cached snapshot for a fast initial paint; falls back to a fresh scan when none exists yet. */
+  const loadOrRunScan = async () => {
+    const stored = await loadStoredScan();
+    if (stored) {
+      setExtensions(stored.extensions);
+      setChanges(stored.changes);
+      setScannedAt(stored.scannedAt);
+    } else {
+      await performScan();
+    }
+  };
+
+  useEffect(() => {
+    void (async () => {
+      const [onboarded, customServices] = await Promise.all([isOnboardingComplete(), getCustomAiServices()]);
+      setServiceOptions(mergeAiServices(customServices));
+
+      if (!onboarded && initialRoute === "onboarding") {
+        setView("onboarding");
+        return;
+      }
+
+      await loadOrRunScan();
+      setView("dashboard");
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setView("loading");
+    void (async () => {
+      await loadOrRunScan();
+      setView("dashboard");
+    })();
   };
 
   const toggleEnabled = async (id: string, enabled: boolean) => {
@@ -100,7 +109,7 @@ export function Dashboard() {
   }
 
   if (view === "onboarding") {
-    return <Onboarding onComplete={() => setView("dashboard")} />;
+    return <Onboarding onComplete={handleOnboardingComplete} />;
   }
 
   if (view === "settings") {

@@ -9,8 +9,10 @@
 - [x] Local snapshot storage and change detection between scans
 - [x] Markdown and JSON report export
 - [x] Onboarding explaining the `management` permission
+- [x] Real-browser integration test suite (loads the packaged extension in real Chromium)
 - [ ] Chrome Web Store listing and screenshots
 - [ ] Full accessibility and manual security review pass
+- [ ] Reproducible build docs + release checksums
 
 ## Later (only after validating user interest — see the MVP plan)
 

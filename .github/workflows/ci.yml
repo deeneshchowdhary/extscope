@@ -19,6 +19,10 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm test
+      - name: Install Chromium for integration tests
+        run: npx playwright install --with-deps chromium
+      - name: Real-browser integration tests (loads the packaged extension)
+        run: npm run test:integration
       - name: Package extension
         run: |
           cd dist
