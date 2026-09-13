@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in improving AI Extension Firewall.
+Thanks for your interest in improving ExtScope.
 
 ## Development setup
 

@@ -16,7 +16,7 @@ const EXPOSURE_LABEL: Record<ExtensionRecord["exposureLevel"], string> = {
 
 export function exportToMarkdown(extensions: ExtensionRecord[], changes: SnapshotChange[]): string {
   const lines: string[] = [];
-  lines.push("# AI Extension Firewall — Privacy Report");
+  lines.push("# ExtScope — Privacy Report");
   lines.push("");
   lines.push(`Generated: ${new Date().toISOString()}`);
   lines.push("");

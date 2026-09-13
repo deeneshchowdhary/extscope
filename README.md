@@ -1,10 +1,10 @@
-# AI Extension Firewall
+# ExtScope
 
 > See which Chrome extensions may access your AI conversations. Local, explainable, and open source.
 
-AI Extension Firewall is an open-source Chrome extension (Manifest V3) that shows you which of your
-other installed browser extensions may be able to read or modify conversations on AI websites such as
-ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity, DeepSeek, and Grok.
+ExtScope is an open-source Chrome extension (Manifest V3) that shows you which of your other installed
+browser extensions may be able to read or modify conversations on AI websites such as ChatGPT, Claude,
+Gemini, Microsoft Copilot, Perplexity, DeepSeek, and Grok.
 
 It analyzes declared extension permissions and host access **locally**, explains the findings in plain
 English, records relevant changes between scans, and lets you disable an extension from one dashboard.

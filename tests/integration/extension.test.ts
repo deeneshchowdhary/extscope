@@ -27,7 +27,7 @@ describe.skipIf(!existsSync(DIST_DIR))("packaged extension in real Chromium", ()
   let userDataDir: string;
 
   beforeAll(async () => {
-    userDataDir = mkdtempSync(join(tmpdir(), "aief-integration-"));
+    userDataDir = mkdtempSync(join(tmpdir(), "extscope-integration-"));
     context = await chromium.launchPersistentContext(userDataDir, {
       headless: false,
       args: [

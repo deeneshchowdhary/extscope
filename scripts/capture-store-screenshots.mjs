@@ -24,7 +24,7 @@ const demoExtensionPaths = [
 ].map((name) => join(DEMO_DIR, name));
 
 const allExtensionPaths = [DIST_DIR, ...demoExtensionPaths].join(",");
-const userDataDir = mkdtempSync(join(tmpdir(), "aief-screenshots-"));
+const userDataDir = mkdtempSync(join(tmpdir(), "extscope-screenshots-"));
 
 const context = await chromium.launchPersistentContext(userDataDir, {
   headless: false,

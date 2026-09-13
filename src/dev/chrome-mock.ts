@@ -21,8 +21,8 @@ interface MockManagementItem {
   optionsUrl?: string;
 }
 
-const STORAGE_KEY = "aief-dev-mock-storage";
-const EXTENSIONS_KEY = "aief-dev-mock-extensions";
+const STORAGE_KEY = "extscope-dev-mock-storage";
+const EXTENSIONS_KEY = "extscope-dev-mock-extensions";
 
 const DEFAULT_EXTENSIONS: MockManagementItem[] = [
   {
@@ -185,6 +185,6 @@ export function installChromeMock() {
 
   (globalThis as { chrome?: unknown }).chrome = mock;
   console.info(
-    "[AI Extension Firewall] Using mock chrome.* APIs for browser preview. This code never ships in the packaged extension."
+    "[ExtScope] Using mock chrome.* APIs for browser preview. This code never ships in the packaged extension."
   );
 }
