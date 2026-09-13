@@ -1,13 +1,24 @@
 # ExtScope
 
-> See which Chrome extensions may access your AI conversations. Local, explainable, and open source.
+> See which Chrome extensions can access your AI conversations — before you paste something confidential.
 
-ExtScope is an open-source Chrome extension (Manifest V3) that shows you which of your other installed
-browser extensions may be able to read or modify conversations on AI websites such as ChatGPT, Claude,
-Gemini, Microsoft Copilot, Perplexity, DeepSeek, and Grok.
+Every time you open ChatGPT, Claude, or Gemini, any other extension you've installed — a coupon finder, a
+screenshot tool, a note-taking app, anything — might have declared permission to read or modify that page.
+Most people have no idea which of their extensions can do this, or why.
 
-It analyzes declared extension permissions and host access **locally**, explains the findings in plain
-English, records relevant changes between scans, and lets you disable an extension from one dashboard.
+**ExtScope scans your installed Chrome extensions and shows you, in plain English, exactly which ones can
+see your AI conversations and why** — based on each extension's declared permissions, not guesswork.
+
+![ExtScope dashboard showing a list of extensions with exposure levels like Limited, Broad, and Extensive](docs/store-assets/screenshot-1-dashboard.png)
+
+## At a glance
+
+- **See every extension** with access to ChatGPT, Claude, Gemini, Copilot, Perplexity, DeepSeek, or Grok
+- **Evidence, not accusations** — every finding cites the exact permission or host pattern behind it
+- **Plain-English exposure levels** — None detected, Limited, Broad, Extensive, or Changed — no mystery score
+- **Change tracking** — get flagged when an extension quietly gains new access
+- **Act immediately** — disable a risky extension right from the dashboard
+- **100% local** — no accounts, no analytics, no server; nothing about your extensions ever leaves your device
 
 ## Important limitation
 
@@ -48,7 +59,21 @@ Exposure levels are descriptive, not a mysterious numeric score:
 - **Extensive** — access to all websites combined with a powerful capability (scripting, clipboard, etc.)
 - **Changed** — newly added relevant access since the previous scan, flagged for review
 
-## Getting started (development)
+## Installing
+
+Not yet published to the Chrome Web Store — for now, build it from source:
+
+```bash
+git clone https://github.com/deeneshchowdhary/extscope.git
+cd extscope
+npm ci
+npm run build
+```
+
+Then in Chrome: open `chrome://extensions`, enable **Developer mode** (top right), click **Load
+unpacked**, and select the `dist/` folder that was just created. Pin it to the toolbar and you're set.
+
+## Development
 
 ```bash
 npm install
@@ -58,13 +83,6 @@ npm run build         # type-checks and produces dist/
 npm run dev:web       # preview the popup/dashboard at http://localhost:3005 with mocked chrome.* APIs
 npm run test:integration  # loads the real dist/ build into real Chromium (see below)
 ```
-
-### Load the unpacked extension in Chrome
-
-1. Run `npm run build`.
-2. Open `chrome://extensions`.
-3. Enable **Developer mode**.
-4. Click **Load unpacked** and select the `dist/` directory.
 
 ### Real-browser integration tests
 
