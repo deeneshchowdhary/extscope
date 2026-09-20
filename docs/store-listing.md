@@ -90,8 +90,8 @@ changes to keep the listing screenshots current. Recommended captions:
 
 Chrome Web Store screenshot spec (verify current values in the dashboard before upload): 1280×800 or
 640×400 PNG/JPEG, up to 5 images. The raw captures are odd sizes, so run
-`node scripts/frame-store-screenshots.mjs` to pad them onto 1280×800 canvases. **Upload the files in
-`docs/store-assets/upload/`**, not the raw ones.
+`node scripts/frame-store-screenshots.mjs` to pad them onto 1280×800 JPEGs (the store rejects PNGs with alpha), and `node scripts/render-promo-tiles.mjs` for the 440×280 and 1400×560 promo tiles. **Upload the files in
+`docs/store-assets/upload/`**, not the raw ones. Take care that screenshots use the fixture demo extensions, not real third-party extensions.
 
 ## Privacy practices tab (Chrome Web Store dashboard)
 

@@ -20,7 +20,8 @@ for (const name of readdirSync(srcDir).filter((f) => f.endsWith(".png"))) {
        <img src="data:image/png;base64,${b64}" style="max-width:1200px;max-height:740px;box-shadow:0 4px 24px rgba(0,0,0,.18);border-radius:8px">
      </body>`,
   );
-  await page.screenshot({ path: join(outDir, name.replace(".png", ".png")) });
-  console.log("Wrote upload/" + name);
+  // JPEG: the store rejects PNGs with an alpha channel, and Chromium's PNGs always have one.
+  await page.screenshot({ path: join(outDir, name.replace(".png", ".jpg")), type: "jpeg", quality: 95 });
+  console.log("Wrote upload/" + name.replace(".png", ".jpg"));
 }
 await browser.close();
