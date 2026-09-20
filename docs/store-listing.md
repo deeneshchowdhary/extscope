@@ -52,7 +52,7 @@ PRIVACY, BY CONSTRUCTION
 • 100% local. No accounts, no analytics, no server — nothing about your installed extensions ever
   leaves your device.
 • Never reads content from any AI website. This extension requests zero host permissions of its own.
-• Open source. Read the code, verify the claims, or contribute: [repo URL]
+• Open source. Read the code, verify the claims, or contribute: https://github.com/deeneshchowdhary/extscope
 
 WHY THE "MANAGE YOUR EXTENSIONS" PERMISSION?
 Chrome only allows listing installed extensions and their permissions through this one permission.
@@ -89,8 +89,9 @@ changes to keep the listing screenshots current. Recommended captions:
 4. `screenshot-4-popup.png` — "A one-glance summary from the toolbar."
 
 Chrome Web Store screenshot spec (verify current values in the dashboard before upload): 1280×800 or
-640×400 PNG/JPEG, up to 5 images. The captures above are 1280×800 (dashboard) and 360×420 (popup) —
-crop or pad the popup one to a supported dimension before upload if the dashboard rejects it as-is.
+640×400 PNG/JPEG, up to 5 images. The raw captures are odd sizes, so run
+`node scripts/frame-store-screenshots.mjs` to pad them onto 1280×800 canvases. **Upload the files in
+`docs/store-assets/upload/`**, not the raw ones.
 
 ## Privacy practices tab (Chrome Web Store dashboard)
 
