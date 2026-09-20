@@ -9,9 +9,9 @@ this writing — recheck them in the dashboard before submitting, since Google d
 
 ## Short description (≤ 132 characters)
 
-See which Chrome extensions can access your ChatGPT, Claude, Gemini, and other AI chats. Local, private, open source.
+See which of your Chrome extensions can access your AI chats. Local, private, open source.
 
-(131 characters)
+(88 characters)
 
 ## Category
 
@@ -21,43 +21,33 @@ fit)
 ## Detailed description
 
 ```
-Know which browser extensions can access your AI conversations before you paste confidential
-information.
+You paste code, contracts, and customer data into AI chat sites. But do you know which of your browser extensions can read those pages?
 
-ExtScope scans your installed Chrome extensions and shows you which ones declare
-permission to read or modify pages on ChatGPT, Claude, Gemini, Microsoft Copilot, Perplexity,
-DeepSeek, and Grok — the AI sites where you're most likely to paste source code, company documents,
-or other sensitive information.
+Many Chrome extensions ask for broad access to "all websites" when you install them, and most people never check. ExtScope shows you which of your installed extensions are able to see your AI conversations, in plain English, in seconds.
 
-WHAT IT SHOWS YOU
-• Every extension with access to a supported AI site, and exactly which one(s)
-• A plain-English explanation of what each declared permission means, with evidence — never a vague
-  "risky" label
-• A descriptive exposure level for each extension: None detected, Limited, Broad, Extensive, or
-  Changed (for anything that gained new access since your last scan)
-• What changed since your last scan, so a newly broadened permission doesn't slip by unnoticed
+WHY INSTALL IT
+• Find out before you paste. See which extensions could see your prompts and answers on popular AI chat sites.
+• Spot the extension you forgot about. An old tool you installed years ago may still have access to every site you visit.
+• Catch changes. When an extension update quietly widens its access, ExtScope flags it as "Changed".
+• Act immediately. Disable or re-enable any extension right from the dashboard.
 
-WHAT YOU CAN DO
-• Disable or re-enable any extension directly from the dashboard
-• Export a full Markdown or JSON privacy report
-• Add your own custom AI domains to watch for
+WHAT YOU GET
+• A clear exposure level for every extension: None detected, Limited, Broad, Extensive, or Changed
+• The evidence behind each rating: the exact permission or site pattern, explained in plain language
+• Filters by exposure level and AI service
+• A one-click Markdown or JSON report you can keep or share
+• Support for your own custom AI sites, such as an internal company chatbot
 
-IMPORTANT: This is a capability report, not proof of misbehavior
-An extension with access to an AI website may be using that access for something completely
-legitimate. ExtScope reports what an extension is *capable* of based on its declared
-permissions — it never claims an extension is malware, and it never reads your prompts, responses, or
-browsing history to make that determination.
+AN HONEST REPORT, NOT A SCARE TOOL
+ExtScope reports what an extension is able to do based on the permissions it declares. It does not say an extension is malicious. Plenty of extensions with broad access are perfectly legitimate. You get the facts, and you decide.
 
-PRIVACY, BY CONSTRUCTION
-• 100% local. No accounts, no analytics, no server — nothing about your installed extensions ever
-  leaves your device.
-• Never reads content from any AI website. This extension requests zero host permissions of its own.
-• Open source. Read the code, verify the claims, or contribute: https://github.com/deeneshchowdhary/extscope
+PRIVATE BY DESIGN
+• Everything runs on your device. No account, no server, no analytics.
+• ExtScope never reads your AI conversations or your browsing history. It requests no access to any website.
+• Fully open source: https://github.com/deeneshchowdhary/extscope
 
 WHY THE "MANAGE YOUR EXTENSIONS" PERMISSION?
-Chrome only allows listing installed extensions and their permissions through this one permission.
-It's used solely to read that metadata locally and to let you disable/enable an extension from this
-dashboard — never anything else.
+It's the only way Chrome lets an extension list your installed extensions and their permissions. ExtScope uses it only to read that information locally and to let you disable or enable an extension when you choose.
 ```
 
 ## Permission justifications (required by the Chrome Web Store review form)
@@ -83,7 +73,7 @@ See `docs/store-assets/` — captured from the real built extension (not mockups
 `npm run build && node scripts/capture-store-screenshots.mjs`. Re-run that script any time the UI
 changes to keep the listing screenshots current. Recommended captions:
 
-1. `screenshot-1-dashboard.png` — "See every extension that can reach ChatGPT, Claude, Gemini, and more — with a plain-language exposure level, not a mystery score."
+1. `screenshot-1-dashboard.png` — "See every extension that can reach your AI chats — with a plain-language exposure level, not a mystery score."
 2. `screenshot-2-findings.png` — "Every finding comes with evidence: the exact permission or host pattern declared, explained in plain English."
 3. `screenshot-3-filtered.png` — "Filter by exposure level or AI service to focus on what matters."
 4. `screenshot-4-popup.png` — "A one-glance summary from the toolbar."
